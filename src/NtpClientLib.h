@@ -73,7 +73,8 @@ using namespace placeholders;
 
 #define DST_ZONE_EU             (0)
 #define DST_ZONE_USA            (1)
-#define DST_ZONE_COUNT          (2)
+#define DST_ZONE_ISRAEL         (2)
+#define DST_ZONE_COUNT          (3)
 #define DEFAULT_DST_ZONE        DST_ZONE_EU
 
 const int NTP_PACKET_SIZE = 48; // NTP time is in the first 48 bytes of message

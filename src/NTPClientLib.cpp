@@ -387,6 +387,16 @@ bool NTPClient::summertime (int year, byte month, byte day, byte hour, byte week
             return false;
     }
 
+	if (DST_ZONE_ISRAEL == _dstZone) {
+		// Israel Summer time is between the last friday of march till the last sunday of october at 2:00 AM
+		if ((month < 3) || (month > 10)) return false;
+		if ((month > 3) && (month < 10)) return true;
+		if (month == 3 && ((hour + 24 * day) >= (1 + tzHours + 24 * (31 - (5 * year / 4 + 6) % 7))) || (month == 10 && (hour + 24 * day) < (1 + tzHours + 24 * (31 - (5 * year / 4 + 1) % 7))))
+			return true;
+		else
+			return false;
+	}
+
     if (DST_ZONE_USA == _dstZone) {
 
         // always false for Jan, Feb and Dec
